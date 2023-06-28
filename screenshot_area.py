@@ -24,7 +24,7 @@ class Image_Area_Selection():
         self.y2 = event.y
         # remove old overlay image
         self.canvas.delete("roi-image")
-        # get the image of selected region
+        
         self.roi_image = self.image.crop((self.x1, self.y1, self.x2, self.y2))
         self.canvas.image = ImageTk.PhotoImage(self.roi_image)
         self.canvas.create_image(

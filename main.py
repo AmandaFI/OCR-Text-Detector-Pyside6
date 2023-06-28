@@ -92,6 +92,8 @@ class Example_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
             cropped_image = self.loaded_img[int(r[1]):int(r[1]+r[3]), 
                                 int(r[0]):int(r[0]+r[2])]
             
+            self.loaded_img = cropped_image
+            
             img = np.ascontiguousarray(cropped_image)
             
             height, width, _channel = img.shape
