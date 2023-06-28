@@ -1,6 +1,6 @@
 import sys
 from PySide6 import QtWidgets, QtGui
-from ocr_detector_ui import Ui_Form_OCR_Detector
+from Layout.ocr_detector_ui import Ui_Form_OCR_Detector
 import cv2
 from PIL import ImageQt
 from screenshot_area import Image_Area_Selection
