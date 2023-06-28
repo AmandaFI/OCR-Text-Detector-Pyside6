@@ -1,0 +1,31 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>camera.svg</file>
+    <file>camera-off.svg</file>
+    <file>cast.svg</file>
+    <file>check.svg</file>
+    <file>clipboard.svg</file>
+    <file>crop.svg</file>
+    <file>download.svg</file>
+    <file>image.svg</file>
+    <file>maximize.svg</file>
+    <file>minimize.svg</file>
+    <file>minimize-2.svg</file>
+    <file>more-horizontal.svg</file>
+    <file>more-vertical.svg</file>
+    <file>plus.svg</file>
+    <file>plus-circle.svg</file>
+    <file>settings.svg</file>
+    <file>share.svg</file>
+    <file>share-2.svg</file>
+    <file>shield.svg</file>
+    <file>slash.svg</file>
+    <file>upload.svg</file>
+    <file>x.svg</file>
+    <file>x-circle.svg</file>
+    <file>x-octagon.svg</file>
+    <file>x-square.svg</file>
+    <file>zoom-in.svg</file>
+    <file>zoom-out.svg</file>
+  </qresource>
+</RCC>
