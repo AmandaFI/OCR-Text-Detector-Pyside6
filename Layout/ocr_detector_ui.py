@@ -315,7 +315,7 @@ class Ui_Form_OCR_Detector(object):
 
     def retranslateUi(self, Form_OCR_Detector):
         Form_OCR_Detector.setWindowTitle(QCoreApplication.translate("Form_OCR_Detector", u"OCR Text Detector", None))
-        self.label_title.setText(QCoreApplication.translate("Form_OCR_Detector", u"Choose Image for OCR Text Detection", None))
+        self.label_title.setText(QCoreApplication.translate("Form_OCR_Detector", u"Choose an Image for OCR Text Detection", None))
         self.label_image.setText("")
 #if QT_CONFIG(tooltip)
         self.pushButton_crop.setToolTip(QCoreApplication.translate("Form_OCR_Detector", u"Crop loaded image", None))
