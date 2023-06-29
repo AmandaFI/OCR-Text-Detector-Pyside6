@@ -21,6 +21,8 @@ class Example_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
         self.loaded_img = None
 
     def initUI(self):
+        """Connects the QtWidgets events to their respective functions.
+        """
         self.pushButton_upload.clicked.connect(self.upload_image_from_file_manager)
         self.pushButton_camera.clicked.connect(self.capture_live_image)
         self.pushButton_screenshot.clicked.connect(self.screenshot)
@@ -29,6 +31,8 @@ class Example_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
 
     
     def upload_image_from_file_manager(self):
+        """Opens the system file manager allowing an local image to be loaded into the application.
+        """
 
         file_path, _filter = QtWidgets.QFileDialog.getOpenFileName(parent=self, caption='Open file', dir='.', filter="Image Files (*.png *.jpg *.jpeg)") 
 
@@ -39,6 +43,8 @@ class Example_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
             self.show_img_on_interface(img_file_path=file_path)
 
     def capture_live_image(self):
+        """Accesses the main camera connected to the system, takes a picture and loads it to the application.
+        """
         cam = cv2.VideoCapture(0)
 
         frame = None
@@ -59,6 +65,8 @@ class Example_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
         self.show_img_on_interface(img=qtImg)
 
     def screenshot(self):
+        """Allows users to select a certain area of the screen to take a screenshot and load it to the application.
+        """
         self.hide()
         roi = self.image_area_selection.select_area()
 
@@ -70,8 +78,15 @@ class Example_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
         self.show()
 
     def show_img_on_interface(self, img=None, img_file_path=None):
+        """Displays the image loaded into the application in the interface following the format required by the QtWidget used.
+
+        Args:
+            img (PySide6.QtGui.QImage or PIL.ImageQt.ImageQt, optional): Array representing the image loaded into the application. Defaults to None.
+            img_file_path (string, optional): Absolute path to the local image loaded into the application. Defaults to None.
+        """
 
         if img:
+            print(type(img))
             try:
                 self.label_image.setPixmap(QtGui.QPixmap.fromImage(img))
             except:
@@ -79,12 +94,13 @@ class Example_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
         elif img_file_path:
             try:
                 self.label_image.setPixmap(QtGui.QPixmap(img_file_path))
-                
             except:
                 _ret = self.message_box(message_title='Error.', message='Error loading image.')
         self.detect_data()
 
     def crop_loaded_img(self):
+        """Opens a new window allowing the loaded image to be cropped into a smaller area.
+        """
         if type(self.loaded_img) != type(None):
             r = cv2.selectROI("Select area.'Enter' to save or 'c' to cancel.", cv2.cvtColor(self.loaded_img, cv2.COLOR_BGR2RGB), showCrosshair=False)
             cv2.destroyWindow("Select area.'Enter' to save or 'c' to cancel.")
@@ -105,6 +121,8 @@ class Example_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
             _ret = self.message_box(message_title='Error.', message='Image required before cropping operation.')
 
     def detect_data(self):
+        """Applies the pytesseract OCR detector to the image loaded into the application.
+        """
         if type(self.loaded_img) != type(None):
             data = ocr.image_to_string(self.loaded_img)
             if data:
@@ -113,6 +131,8 @@ class Example_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
                 self.plainTextEdit_detected_data.setPlainText('No text detected.')
 
     def copy_to_clipboard(self):
+        """Copy content fromt QtWidget plainTextEdit_detected_data to the system clipboard.
+        """
         pyperclip.copy(self.plainTextEdit_detected_data.toPlainText())
 
 
