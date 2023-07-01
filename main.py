@@ -10,9 +10,11 @@ import pytesseract as ocr
 import pyperclip
 
 ocr.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# https://pyimagesearch.com/2021/08/16/installing-tesseract-pytesseract-and-python-ocr-packages-on-your-system/
+# https://nanonets.com/blog/ocr-with-tesseract/
 
 
-class Example_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
+class Main_Window(QtWidgets.QWidget, Ui_Form_OCR_Detector):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setupUi(self)
@@ -164,6 +166,6 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication.instance()
     if app is None:
         app = QtWidgets.QApplication(sys.argv)
-        window = Example_Window()
+        window = Main_Window()
         window.show()
         app.exec()
